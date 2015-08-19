@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'phonegap-android-crosswalk' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose cache add [ 'phonegap-android-crosswalk', null ]
+6 verbose cache add name=undefined spec="phonegap-android-crosswalk" args=["phonegap-android-crosswalk",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'phonegap-android-crosswalk',
+7 verbose parsed url   path: 'phonegap-android-crosswalk',
+7 verbose parsed url   href: 'phonegap-android-crosswalk' }
+8 silly lockFile 2de16403-phonegap-android-crosswalk phonegap-android-crosswalk
+9 verbose lock phonegap-android-crosswalk C:\Users\marci\AppData\Roaming\npm-cache\2de16403-phonegap-android-crosswalk.lock
+10 silly lockFile 2de16403-phonegap-android-crosswalk phonegap-android-crosswalk
+11 silly lockFile 2de16403-phonegap-android-crosswalk phonegap-android-crosswalk
+12 verbose addNamed [ 'phonegap-android-crosswalk', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile d71a3e4b-phonegap-android-crosswalk phonegap-android-crosswalk@
+15 verbose lock phonegap-android-crosswalk@ C:\Users\marci\AppData\Roaming\npm-cache\d71a3e4b-phonegap-android-crosswalk.lock
+16 silly addNameRange { name: 'phonegap-android-crosswalk',
+16 silly addNameRange   range: '*',
+16 silly addNameRange   hasData: false }
+17 verbose request where is /phonegap-android-crosswalk
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 42f531fcf6fdb722
+20 verbose url raw /phonegap-android-crosswalk
+21 verbose url resolving [ 'https://registry.npmjs.org/',
+21 verbose url resolving   './phonegap-android-crosswalk' ]
+22 verbose url resolved https://registry.npmjs.org/phonegap-android-crosswalk
+23 verbose request where is https://registry.npmjs.org/phonegap-android-crosswalk
+24 info trying registry request attempt 1 at 21:42:15
+25 http GET https://registry.npmjs.org/phonegap-android-crosswalk
+26 http 404 https://registry.npmjs.org/phonegap-android-crosswalk
+27 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '51',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   date: 'Thu, 25 Jun 2015 19:42:13 GMT',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   connection: 'keep-alive',
+27 verbose headers   'x-served-by': 'cache-fra1226-FRA',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1435261333.662435,VS0,VE179' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '51',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     date: 'Thu, 25 Jun 2015 19:42:13 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-fra1226-FRA',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1435261333.662435,VS0,VE179' } ]
+29 silly lockFile d71a3e4b-phonegap-android-crosswalk phonegap-android-crosswalk@
+30 silly lockFile d71a3e4b-phonegap-android-crosswalk phonegap-android-crosswalk@
+31 error 404 404 Not Found: phonegap-android-crosswalk
+31 error 404
+31 error 404 'phonegap-android-crosswalk' is not in the npm registry.
+31 error 404 You should bug the author to publish it
+31 error 404
+31 error 404 Note that you can also install from a
+31 error 404 tarball, folder, or http url, or git url.
+32 error System Windows_NT 6.1.7601
+33 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "phonegap-android-crosswalk"
+34 error cwd C:\Users\marci\Dropbox\phonegap\minimap
+35 error node -v v0.10.33
+36 error npm -v 1.4.28
+37 error code E404
+38 verbose exit [ 1, true ]
