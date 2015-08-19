@@ -3,8 +3,8 @@ var subobj2 = {src:'img/minta.png'};
 
 var object1 = {
 				src: 'img/Rajz1.png',
-				width: 902,
-				height: 1497,
+				//width: 902,
+				//height: 1497,
 				icons: [
 					{type:'popup',x:190,y:450,link: subobj1},
 					{type:'popup',x:828,y:752,link: subobj2},
