@@ -9,16 +9,16 @@ this.is_main = true;
 var _self = this;
 
 // init minimap at document load with object from xml file
-function minimap_init() {
+function app_init() {
 	var p = window.location.search;
 	var res = p.substring(1, p.length); 
 	eval('var obj=' + res);
 	current_object = obj;
 	main_object = obj;
-	minimap_start('first');
+	app_start('first');
 }
 
-function minimap_start(mode) {
+function app_start(mode) {
 	
 	if (!_self.is_main) {
 		$('#close img').attr('src','img/back.png');
@@ -27,7 +27,7 @@ function minimap_start(mode) {
 			_self.is_main = true;
 			myScroll.destroy();
 			myScroll = null;
-			minimap_start('second');
+			app_start('second');
 		});
 		$('.ikon').remove();
 	} else {
@@ -37,26 +37,26 @@ function minimap_start(mode) {
 		$('#close img').click(function(){
 			document.location='index.html';
 		});
-		create_icons(); 
 	}
 	
 	var url = current_object.src;
+
 	window.scrollTo(0,0);
 	$('body').css('overflow','hidden');
-	$('#kep').attr('src',url);
 	$('#container').css('display','block');	
-	$('#kep').load(mode,function () {
+	
+	//$('#kep').load(mode,function () {
+	$("#kep").one("load", function() {
+
 		if (mode=='first') {
-			origw = $("#kep").width();
-			origh = $('#kep').height();			
+			main_origw = $("#kep").width();
+			main_origh = $('#kep').height();						
 		}
+	
+		origw = $("#kep").width();
+		origh = $('#kep').height();			
 		
-		if ($("#kep").width()>=$("#kep").height()) {
-			$("#kep").css("width", '100%');	
-			
-		} else {
-			$("#kep").css("height", '100%');	
-		}
+		align_image();
 		
 		myScroll = new IScroll('#wrapper', {
 			zoom: true,
@@ -68,16 +68,17 @@ function minimap_start(mode) {
 			freeScroll: true,
 			momentum: false
 		});
-		myScroll.on('scrollStart', function(){scroll_start()});
-		myScroll.on('zoomStart', function(){zoom_start()});
-		myScroll.on('scrollEnd', function(){scroll_end()});
-		myScroll.on('zoomEnd', function(){zoom_end()});
+		myScroll.on('scrollStart', update_minimap);
+		myScroll.on('zoomStart', update_minimap);
+		myScroll.on('scrollEnd', update_minimap);
+		myScroll.on('zoomEnd', update_minimap);
 		
+		if (_self.is_main) create_icons();
 		init_minimap();
 		
 		window.addEventListener("resize", function() {reorient()}, false);
 
-	});
+	}).attr("src", url);
 }
 
 
@@ -90,7 +91,7 @@ function init_minimap() {
 		$('#thumb_container').append('<div id="resize2small"><img src="img/resize-to-small.png" /></div>');
 		var thumb = '<img id="thumb" src="'+current_object.src+'" />';
 		$('#thumb_container').append(thumb);
-		$("#thumb").load(function(){
+		$("#thumb").one("load",function(){
 			$('#thumb_container').show();
 			$('#thumb_container').height($("#thumb").height());
 			$('#thumb_container').css('top',($(window).height()-$('#thumb_container').height()));
@@ -103,15 +104,32 @@ function init_minimap() {
 				update_resize_icon();		
 				minimap_minimized = true;
 			});
+			update_minimap();	
 		});
-		scroll_end();
-		zoom_end();
+		
 	} else {
 		update_resize_icon();
+		update_minimap();
 	}
-	if(_self.is_main) update_icons();
 }
 
+function align_image() {
+	if (origw>=origh) {
+		$("#kep").css("width", '100%');	
+		$("#kep").css("height", 'auto');	
+		if ($("#kep").height()>=$(window).height()) {
+			$("#kep").css('height',$(window).height());
+			$("#kep").css("width", 'auto');		
+		}
+	} else {
+		$("#kep").css("height", '100%');	
+		$("#kep").css("width", 'auto');	
+		if ($("#kep").width()>=$(window).width()) {
+			$("#kep").css('width',$(window).width());
+			$("#kep").css("height", 'auto');	
+		}
+	}
+}
 
 function update_resize_icon() {
 	var top = $(window).height() - $("#resize2large").height();
@@ -138,17 +156,20 @@ function scroll_start() {
 	hide_icons();
 }
 
-/* Frissíti a térképet panning esetén */
-function scroll_end() {
-	$('#mask').css('left',-(parseInt($('#mask').width()*myScroll.x/$(window).width())) + 'px');
-	$('#mask').css('top',-(parseInt($('#mask').height()*myScroll.y/$(window).height())) + 'px');
-	if (_self.is_main) update_icons();
-}
 
-/* Frissíti a térképet zoom esetén */
-function zoom_end() {
-	$('#mask').width(parseInt($('#thumb_container').width() / (myScroll.scrollerWidth/$(window).width() ))) ;
-	$('#mask').height(parseInt($('#thumb_container').height() / (myScroll.scrollerHeight/$(window).height() ))) ;
+/* Frissíti a térképet panning vagy zoom esetén */
+function update_minimap() {
+	var left = -(parseInt($('#mask').width()*myScroll.x/$(window).width()));
+	var top = -(parseInt($('#mask').height()*myScroll.y/$(window).height()));
+	var width = parseInt($('#thumb_container').width() / (myScroll.scrollerWidth/$(window).width() ));
+	var height = parseInt($('#thumb_container').height() / (myScroll.scrollerHeight/$(window).height() ));
+	
+	console.log('update to (L,T,W,H): ' + left + ',' + top + ',' + width + ',' + height);
+	
+	$('#mask').css('left', left + 'px');
+	$('#mask').css('top', top + 'px');
+	$('#mask').width(width) ;
+	$('#mask').height(height) ;
 	if (_self.is_main) update_icons();
 }
 
@@ -165,13 +186,18 @@ function center_image() {
 function reorient() {
 	$('#container').width($(window).width());
 	$('#container').height($(window).height());
+	align_image();
+	if (_self.is_main) update_icons();
+	update_close_btn();
 	init_minimap();
-	if (_self.is_main) update_icons(); 
+	//myScroll.scrollTo(0,0);
 }
 
 /* Bezáró/visszalépő gomb újrapozícionálása */
 function update_close_btn() {
+	$('#close').css('display','none');
 	$('#close').css('left',parseInt($(window).width()-$('#close').width()) + 'px');
+	$('#close').css('display','block');
 }
 
 
@@ -212,7 +238,7 @@ function create_icons() {
 							myScroll = null;
 							current_object = e.data;
 							_self.is_main = false;
-							minimap_start('second');
+							app_start('second');
 						});
 						
 					}
@@ -222,6 +248,7 @@ function create_icons() {
 			}
 			
 		}
+		if (_self.is_main) update_icons();
 	}
 	
 }
@@ -238,8 +265,8 @@ function update_icons() {
 			
 			var id='icon_'+(i+1);
 			
-			var new_x = parseInt(arr[i].x * kep.width/origw) + myScroll.x;
-			var new_y = parseInt(arr[i].y * kep.height/origh) + myScroll.y;
+			var new_x = parseInt(arr[i].x * kep.width/main_origw) + myScroll.x;
+			var new_y = parseInt(arr[i].y * kep.height/main_origh) + myScroll.y;
 			
 			$('#'+id).css('left',new_x + 'px');
 			$('#'+id).css('top',new_y + 'px');
@@ -257,5 +284,5 @@ function show_icons() {
 }
 
 function hide_icons() {
-	$('.ikon').css('display','none');
+	//$('.ikon').css('display','none');
 }
