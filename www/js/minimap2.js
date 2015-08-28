@@ -51,7 +51,7 @@ function minimap_start(mode) {
 			origh = $('#kep').height();			
 		}
 		
-		if (origw>=origh) {
+		if ($("#kep").width()>=$("#kep").height()) {
 			$("#kep").css("width", '100%');	
 			
 		} else {
@@ -233,8 +233,6 @@ function update_icons() {
 		var len = arr.length;
 		
 		var kep = document.getElementById('kep').getBoundingClientRect();
-		console.log('kep width:' + kep.width + ', kep height:' + kep.height);
-		console.log('origw:' + origw + ', origh:' + origh);
 		
 		for (var i=0;i<len;i++){
 			
