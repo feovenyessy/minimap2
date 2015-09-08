@@ -12,11 +12,49 @@ var _self = this;
 function app_init() {
 	var p = window.location.search;
 	var res = p.substring(1, p.length); 
-	eval('var obj=' + res);
-	current_object = obj;
-	main_object = obj;
-	app_start('first');
+	var obj = get_xml_object(res);
+	//eval('var obj=' + res);
+
 }
+
+function get_xml_object(object_id) {
+    $.get("data.xml",function(data){parseData(object_id,data)});
+}
+
+function parseData(object_id,data) {
+	var return_object = {identifier: object_id};
+	$(data).find('object').each(function() {
+		if ($(this).attr("identifier")==object_id) {
+			return_object.src = $(this).attr("src");
+			return_object.icons = [];				
+			$(this).children().find("icon").each(function() {
+				var icon = {}
+				icon.x = $(this).attr('x');
+				icon.y = $(this).attr('y');
+				if ($(this).attr('type')=='tooltip') {
+					icon.type = "tooltip";
+					icon.txt = $(this).attr('txt');
+				} else if ($(this).attr('type')=='popup') {
+					icon.type = "popup";
+					icon.x = $(this).attr('x');
+					icon.y = $(this).attr('y');
+					icon.link = {src:$(this).attr('src')};
+				}
+				return_object.icons.push(icon);
+			});
+			current_object = return_object;
+			main_object = return_object;
+			app_start('first');
+		} else {
+			alert('Objektum nem létezik.');			
+		}
+		
+	});
+
+}
+
+
+
 
 function app_start(mode) {
 	
@@ -60,6 +98,7 @@ function app_start(mode) {
 		
 		myScroll = new IScroll('#wrapper', {
 			zoom: true,
+			zoomMax: 10,
 			scrollX: true,
 			scrollY: true,
 			mouseWheel: true,
@@ -68,8 +107,8 @@ function app_start(mode) {
 			freeScroll: true,
 			momentum: false
 		});
-		myScroll.on('scrollStart', update_minimap);
-		myScroll.on('zoomStart', update_minimap);
+		myScroll.on('scrollStart', hide_icons);
+		myScroll.on('zoomStart', hide_icons);
 		myScroll.on('scrollEnd', update_minimap);
 		myScroll.on('zoomEnd', update_minimap);
 		
@@ -77,8 +116,9 @@ function app_start(mode) {
 		init_minimap();
 		
 		window.addEventListener("resize", function() {reorient()}, false);
-
+		
 	}).attr("src", url);
+
 }
 
 
@@ -147,18 +187,12 @@ function update_resize_icon() {
 
 
 
-function zoom_start() {
-	hide_icons();
-}
-
-
-function scroll_start() {
-	hide_icons();
-}
-
-
 /* Frissíti a térképet panning vagy zoom esetén */
 function update_minimap() {
+
+	if (_self.is_main) 
+		hide_icons();
+	
 	var left = -(parseInt($('#mask').width()*myScroll.x/$(window).width()));
 	var top = -(parseInt($('#mask').height()*myScroll.y/$(window).height()));
 	var width = parseInt($('#thumb_container').width() / (myScroll.scrollerWidth/$(window).width() ));
@@ -170,22 +204,24 @@ function update_minimap() {
 	$('#mask').css('top', top + 'px');
 	$('#mask').width(width) ;
 	$('#mask').height(height) ;
-	if (_self.is_main) update_icons();
+	
+	if (_self.is_main)
+		update_icons();
 }
 
 /* Kép középre rendezése */
 function center_image() {
-	var left = parseInt(($(window).width()-$('#kep').width())/2);
-	var top = parseInt(($(window).height()-$('#kep').height())/2);
-	$('#kep').css('left',left + 'px');
-	$('#kep').css('top',top + 'px');
+	var kep = document.getElementById('kep').getBoundingClientRect();
+	var left = parseInt(($(window).width()-kep.width)/2);
+	var top = parseInt(($(window).height()-kep.height)/2);
+	console.log('left: '+left+' ; top: ' + top);
+	$('#wrapper').css('left',left + 'px');
+	$('#wrapper').css('top',top + 'px');
 }
 
 
 /* Elforgatás/átméretezés esetén */
 function reorient() {
-	$('#container').width($(window).width());
-	$('#container').height($(window).height());
 	align_image();
 	if (_self.is_main) update_icons();
 	update_close_btn();
@@ -204,7 +240,6 @@ function update_close_btn() {
 
 /* ikonok létrehozása */
 function create_icons() {
-	console.log('CREATE ICONS');
 	if (current_object.icons) {
 		var arr = current_object.icons;
 		var len = arr.length;
@@ -215,18 +250,19 @@ function create_icons() {
 			var id='icon_'+(i+1)+'';
 			
 			var ikon = '<img id="'+id+'" class="ikon" src="img/tooltip.png" />';
+
 			$('#wrapper').append(ikon);
 			
 			switch (arr[i].type) {
 				case 'tooltip': 
 					$('#'+id).attr('src',"img/tooltip.png");
-					
+				
 					$('#'+id).qtip({
 						content: {
 							text: arr[i].txt
 						},
 						show: {event: 'mouseenter click touchstart'},
-						hide: {event: 'mouseleave imageUpdateEvent'}
+						hide: {event: 'mouseleave unfocus'}
 					});
 					
 					break;
@@ -271,8 +307,8 @@ function update_icons() {
 			$('#'+id).css('left',new_x + 'px');
 			$('#'+id).css('top',new_y + 'px');
 			
-			$('#'+id).css('width','24px');
-			$('#'+id).css('height','24px');
+			$('#'+id).css('width','36px');
+			$('#'+id).css('height','36px');
 			
 		}
 		show_icons();	
@@ -284,5 +320,10 @@ function show_icons() {
 }
 
 function hide_icons() {
-	//$('.ikon').css('display','none');
+	$('.ikon').css('display','none');
+	hide_tooltips();
+}
+
+function hide_tooltips() {
+	$('.qtip').qtip('hide');
 }
