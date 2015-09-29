@@ -2,20 +2,20 @@
 <minimap>
 	<object identifier="object1" src="img/3110-torvenyessegi_elllenorzes.png">
 		<icons>
-			<icon type="tooltip" x="221" y="162" txt="1. sz. iratminta: A törvényességi ellenőrzés fenntartói tervezése" />
-			<icon type="tooltip" x="221" y="277" txt="• kitöltött 1. sz. irat; • 2. sz. iratminta: A törvényességi ellenőrzési program" />
-			<icon type="tooltip" x="221" y="424" txt="• kitöltött 2. sz. irat; • 3. sz. iratminta: Feljegyzés előzetes egyeztetésről" />
-			<icon type="tooltip" x="221" y="606" txt="• Kitöltött 3. sz. irat; • 4. sz. iratminta: Értesítés törvényességi ellenőrzésről" />
-			<icon type="tooltip" x="308" y="648" txt="kitöltött 4. sz. irat:Értesítés törvényességi ellenőrzésről" />
-			<icon type="tooltip" x="221" y="753" txt="5. sz. iratminta: Törvényességi ellenőrzést végző szakember megbízólevele" />
-			<icon type="tooltip" x="359" y="810" txt="Törvényességi ellenőrzést végző szakember megbízólevele" />
-			<icon type="tooltip" x="663" y="950" txt="A fenntartó által kért dokumentumok" />
-			<icon type="tooltip" x="221" y="1000" txt="Az intézmény által beküldött dokumentumok, adatlapok/űrlapok, az egyes területek vizsgálatához" />
-			<icon type="tooltip" x="221" y="1133" txt="• 6. sz. iratminta: A helyszíni ellenőrzés jegyzőkönyve; • 7. sz. iratminta: A törvényességi ellenőrzésről készült jelentés tervezete; • 8. sz. iratminta: Teljességi nyilatkozat" />
-			<icon type="tooltip" x="472" y="1133" txt="• 6. sz. iratminta: A helyszíni ellenőrzés jegyzőkönyve; • 7. sz. iratminta: A törvényességi ellenőrzésről készült jelentés tervezete; • 8. sz. iratminta: Teljességi nyilatkozat" />
-			<icon type="tooltip" x="359" y="1590" txt="A törvényességi ellenőrzésről készült jelentés" />
-			<icon type="tooltip" x="221" y="1850" txt="9. sz. iratminta: Intézkedési terv a törvényességi ellenőrzésről készült jelentésben megállapított hiányosságok javítására" />
-			<icon type="tooltip" x="221" y="2230" txt="10. sz. iratminta: Utóellenőrzésről készült jelentés" />
+			<icon type="tooltip" x="179" y="187" txt="1. sz. iratminta: A törvényességi ellenőrzés fenntartói tervezése" />
+			<icon type="tooltip" x="179" y="292" txt="• kitöltött 1. sz. irat; • 2. sz. iratminta: A törvényességi ellenőrzési program" />
+			<icon type="tooltip" x="179" y="435" txt="• kitöltött 2. sz. irat; • 3. sz. iratminta: Feljegyzés előzetes egyeztetésről" />
+			<icon type="tooltip" x="179" y="620" txt="• Kitöltött 3. sz. irat; • 4. sz. iratminta: Értesítés törvényességi ellenőrzésről" />
+			<icon type="tooltip" x="315" y="667" txt="kitöltött 4. sz. irat:Értesítés törvényességi ellenőrzésről" />
+			<icon type="tooltip" x="179" y="767" txt="5. sz. iratminta: Törvényességi ellenőrzést végző szakember megbízólevele" />
+			<icon type="tooltip" x="397" y="825" txt="Törvényességi ellenőrzést végző szakember megbízólevele" />
+			<icon type="tooltip" x="680" y="968" txt="A fenntartó által kért dokumentumok" />
+			<icon type="tooltip" x="239" y="1017" txt="Az intézmény által beküldött dokumentumok, adatlapok/űrlapok, az egyes területek vizsgálatához" />
+			<icon type="tooltip" x="205" y="1150" txt="• 6. sz. iratminta: A helyszíni ellenőrzés jegyzőkönyve; • 7. sz. iratminta: A törvényességi ellenőrzésről készült jelentés tervezete; • 8. sz. iratminta: Teljességi nyilatkozat" />
+			<icon type="tooltip" x="490" y="1150" txt="• 6. sz. iratminta: A helyszíni ellenőrzés jegyzőkönyve; • 7. sz. iratminta: A törvényességi ellenőrzésről készült jelentés tervezete; • 8. sz. iratminta: Teljességi nyilatkozat" />
+			<icon type="tooltip" x="345" y="1605" txt="A törvényességi ellenőrzésről készült jelentés" />
+			<icon type="tooltip" x="220" y="1868" txt="9. sz. iratminta: Intézkedési terv a törvényességi ellenőrzésről készült jelentésben megállapított hiányosságok javítására" />
+			<icon type="tooltip" x="179" y="2246" txt="10. sz. iratminta: Utóellenőrzésről készült jelentés" />
 			<icon type="popup" x="100" y="100" src="img/coffee-chart-3.jpg" />
 		</icons>
 	</object>
