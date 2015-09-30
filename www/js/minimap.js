@@ -4,6 +4,7 @@ var current_object;
 var main_object;
 var origw;
 var origh;
+var iconsize=36;
 this.is_main = true;
 
 var _self = this;
@@ -304,11 +305,11 @@ function update_icons() {
 			var new_x = parseInt(arr[i].x * kep.width/main_origw) + myScroll.x;
 			var new_y = parseInt(arr[i].y * kep.height/main_origh) + myScroll.y;
 
-			$('#'+id).css('width','36px');
-			$('#'+id).css('height','36px');
+			$('#'+id).css('width',iconsize + 'px');
+			$('#'+id).css('height',iconsize + 'px');
 			
-			$('#'+id).css('left',new_x-18 + 'px');
-			$('#'+id).css('top',new_y-18 + 'px');
+			$('#'+id).css('left',new_x + 'px');
+			$('#'+id).css('top',new_y-iconsize/2 + 'px');
 			
 
 			
