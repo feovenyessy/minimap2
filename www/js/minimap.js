@@ -260,7 +260,7 @@ function create_icons() {
 				
 					$('#'+id).qtip({
 						content: {
-							text: arr[i].txt
+							text: parse_tooltip(arr[i].txt)
 						},
 						show: {event: 'mouseenter click touchstart'},
 						hide: {event: 'mouseleave unfocus'}
@@ -316,6 +316,13 @@ function update_icons() {
 		}
 		show_icons();	
 	} 	
+}
+
+function parse_tooltip(txt) {
+	//#url:#http://www.index.hu#törvényességi#:url#
+	txt = txt.replace(/#url:#([^#]*?)#/gi, '<a href="javascript:void(0)" onclick="window.open(\'$1\', \'_system\');">');
+	txt = txt.replace(/#:url#/gi, '</a>');
+	return txt;
 }
 
 function show_icons() {

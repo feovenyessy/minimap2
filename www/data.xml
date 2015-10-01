@@ -2,7 +2,7 @@
 <minimap>
 	<object identifier="object1" src="img/3110-torvenyessegi_elllenorzes.png">
 		<icons>
-			<icon type="tooltip" x="151" y="186" txt="1. sz. iratminta: A törvényességi ellenőrzés fenntartói tervezése" />
+			<icon type="tooltip" x="151" y="186" txt="1. sz. iratminta: A #url:#https://hu.wikipedia.org/wiki/T%C3%B6rv%C3%A9ny_%28jogszab%C3%A1ly%29#törvényességi#:url# ellenőrzés fenntartói tervezése" />
 			<icon type="tooltip" x="151" y="293" txt="• kitöltött 1. sz. irat; • 2. sz. iratminta: A törvényességi ellenőrzési program" />
 			<icon type="tooltip" x="151" y="437" txt="• kitöltött 2. sz. irat; • 3. sz. iratminta: Feljegyzés előzetes egyeztetésről" />
 			<icon type="tooltip" x="151" y="623" txt="• Kitöltött 3. sz. irat; • 4. sz. iratminta: Értesítés törvényességi ellenőrzésről" />
