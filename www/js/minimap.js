@@ -1,3 +1,8 @@
+/********************
+*  Minimap v5.10.6	*
+*********************/
+
+
 var myScroll;
 var minimap_minimized = false;
 var current_object;
@@ -319,9 +324,12 @@ function update_icons() {
 }
 
 function parse_tooltip(txt) {
-	//#url:#http://www.index.hu#törvényességi#:url#
 	txt = txt.replace(/#url:#([^#]*?)#/gi, '<a href="javascript:void(0)" onclick="window.open(\'$1\', \'_system\');">');
 	txt = txt.replace(/#:url#/gi, '</a>');
+	txt = txt.replace(/#ul:#/gi, '<ul>');
+	txt = txt.replace(/#li:#/gi, '<li>');
+	txt = txt.replace(/#:li#/gi, '</li>');
+	txt = txt.replace(/#:ul#/gi, '</ul>');
 	return txt;
 }
 
