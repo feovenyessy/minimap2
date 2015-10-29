@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<minimap>
+	<object identifier="object1" src="A_tanuloval_szembeni_fegyelmi_eljaras_folyamata.png">
+		<icons>
+			<popup x="463" y="285" src="Fegyelmi_eljarast_megelozo_egyezteto_elj.png">
+				<subtips>
+					<subtip x="409" y="472" txt="Tájékoztató egyeztető eljárásról" />
+					<subtip x="1137" y="2790" txt="A sértett, a kötelességszegő (gyakorlati képzés folytatója, illetékes gazdasági kamara) értesítése a fegyelmi eljárás megindításáról" />
+					<subtip x="426" y="1045" txt="Kérelem egyeztető eljárás lefolytatására" />
+					<subtip x="290" y="985" txt="Kérelem egyeztető eljárás lefolytatására" />
+				</subtips>
+			</popup>
+			<popup x="463" y="490" src="Elsofoku_fegyelmi_eljaras.png">
+				<subtips>
+					<subtip x="555" y="133" txt="Másodfokú határozat vagy bírósági döntés alapján az elsőfokú döntés felülvizsgálata, új eljárás" />
+					<subtip x="320" y="454" txt="Értesítés fegyelmi eljárás megindításáról #ul:##li:#Kötelességszegés#:li##li:#Fegyelmi tárgyalás időpontja,#:li##li:#Helye#:li##:ul#" />
+					<subtip x="200" y="971" txt="Vitatja a kötelezettségszegő a terhére rótt kötelezettségszegést, vagy a tényállás indokolja a fegyelmi tárgyalás lefolytatását?" />
+					<subtip x="223" y="1093" txt="#ul:##li:#Kötelezettségszegő, gazdálkodási szervezet tájékoztatása, bizonyítási, indítványtételi jog biztosítása#:li##li:#Tényállás tisztázása, bizonyítási eljárás lefolytatása#:li##li:#Tárgyalásról, bizonyítási eljárásról jegyzőkönyv készítése#:li##:ul#" />
+					<subtip x="420" y="1432" txt="Jelzés kiskorú veszélyeztetettségéről" />
+					<subtip x="420" y="1687" txt="Kérelem iskolai, kollégiumi diákönkormányzati vélemény megküldésére" />
+					<subtip x="1123" y="1846" txt="Iskolai, kollégiumi diákönkormányzati vélemény" />
+					<subtip x="477" y="2105" txt="Fegyelmi határozat" />
+				</subtips>
+			</popup>
+			<popup x="171" y="500" src="Fegyelmi_buntetes_kiszabasa_es_vegrehajtasa.png">
+				<subtips>
+					<subtip x="293" y="205" txt="#ul:##li:#Fegyelmi határozat fogadása sértett által#:li##li:#Fegyelmi határozat fogadása kötelezettségszegő által#:li##:ul#" />
+					<subtip x="414" y="522" txt="Fegyelmi határozat lehet: #ul:##li:#megrovás#:li##li:#szigorú megrovás#:li##li:#meghatározott kedvezmények csökkentése#:li##li:#áthelyezés másik osztályba, iskolába#:li##li:#eltiltás a tanév folytatásától#:li##li:#kizárás#:li##:ul#" />
+					<subtip x="522" y="680" txt="Értesítés a fegyelmi büntetésről" />
+				</subtips>
+			</popup>
+			<popup x="171" y="720" src="Rendes_vagy_rendkivuli_jogorvoslati_eljaras.png">
+				<subtips>
+					<subtip x="206" y="198" txt="Fegyelmi büntetésről szóló határozat fogadása a kötelezettségszegő által" />
+					<subtip x="408" y="395" txt="Fellebbezés fegyelmi határozat ellen" />
+					<subtip x="710" y="472" txt="#ul:##li:#Elsőfokú fegyelmi jogkör gyakorlójának véleménye#:li##li:#Fegyelmi eljárás ügyiratai#:li##li:#Fellebbezés fegyelmi határozat ellen.#:li##:ul#" />
+					<subtip x="929" y="727" txt="Másodfokú határozat lehet:#ul:##li:#elsőfokú döntés megváltoztatása#:li##li:#fellebbezés elutasítása#:li##li:#elsőfokú döntés megsemmisítése, és az elsőfokú fegyelmi jogkör gyakorlójának új döntés meghozatalára való utasítása#:li##:ul#" />
+					<subtip x="1108" y="2108" txt="Bírósági döntés lehet:#ul:##li:#másodfokú döntés helyben hagyása#:li##li:#másodfokú döntés hatályon kívül helyezése és új eljárásra utasítás#:li##:ul#" />
+					<subtip x="1106" y="2717" txt="A másodfokú határozat vagy bírósági döntés alapján az elsőfokú döntés felülvizsgálata; új eljárás. Sértett, kötelezettségszegő (gyakorlati képzés folytatója, illetékes gazdasági kamara) értesítése fegyelmi eljárás megindításáról" />
+				</subtips>
+			</popup>
+			
+			
+		</icons>
+	</object>
+	
+</minimap>

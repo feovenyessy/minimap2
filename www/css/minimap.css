@@ -1,111 +1,66 @@
+/*
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+*/
 
-
-
-#zoom_layer {
-	width:100%;
-	height:100%;
+/* the main container for all content */
+#minimap-container {
 	display: none;
-}
-
-#wrapper {
 	position: absolute;
-	z-index: 100;
-	top: 0px;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	background: rgba(0,0,0,0.75);
+	z-index: 1000;
+}
+
+/* the div for iScroller */
+#minimap-wrapper {
+	
+	position: relative;
 	overflow: hidden;
+
+	width: 100%;
+	height: 100%;
+	
+	/*
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+	*/
+}
+
+
+div#minimap-container div#superwrapper {
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
 
 
-
-
-
-
-
-
-
+/*
 body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 }
-
-/* Launcher button */
-div#launcher {
-	width: 200px;
-	height: 100px;
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
-	background: red;
-	color: white;
-	cursor: pointer;
-}
-
-
-/* main container */
-div#container {
-	
-	display: none;
-	width: 100%;
-	height: 100%;
-	/*
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 0;
-	padding: 0;
-	/*
-	background: white;
-	overflow: hidden;
-	z-index: 100;
-	*/
-	
-	/*
-	-webkit-backface-visibility: initial !important;
-	-webkit-transform-origin: 50% 50%;
-	*/
-}
-
-/* main image */
-div#kep {
-	width: 100%;
-}
-
-.panzoom {
-/*
--webkit-backface-visibility: initial !important;
--webkit-transform-origin: 50% 50%;
 */
-/*
-transform: translateZ(0);
--webkit-transform: translateZ(0);
--moz-transform: translateZ(0);
--o-transform: translateZ(0);
--ms-transform: translateZ(0);
-*/
-}
 
-img#kepbmp {
-	width: 100%;
-}
 
-/* mini map konténer */
-div#thumb_container {
+/* ---------------- minimap -------------- */
+
+div#minimap-container div#thumb_container {
 	position:absolute;
-	z-index: 600;
+	z-index: 1100;
 	top: 0;
 	left: 0;
-	width: 140px;
+	width: 100px;
 	border: 1px solid black;
 	margin: 0;
 	padding: 0;
@@ -113,7 +68,7 @@ div#thumb_container {
 }
 
 /* mini map kép */
-img#thumb {
+div#minimap-container img#thumb {
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -121,7 +76,7 @@ img#thumb {
 }
 
 /* mini map tracker mask */
-div#mask {
+div#minimap-container div#mask {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -129,64 +84,105 @@ div#mask {
 	height: 100%;	
 	background: rgba(0,0,0,0.1);
 	border: 1px solid black;
-	z-index: 700;
+	z-index: 1200;
+}
+
+/* minimap resize buttons */
+div#minimap-container #resize2large img,
+div#minimap-container #resize2small img  {
+	width: 100%;
+	height: 100%;
+	opacity: 0.5;
+}
+div#minimap-container #resize2large {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	z-index: 1300;
+	display: none;
+}
+div#minimap-container #resize2small {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	z-index: 1300;
 }
 
 
-/* ikonok */
-.ikon {
-	position: absolute;
-	z-index: 500;
+
+
+
+
+/* Launcher button */
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 200px;
+	height: 100px;
+	background: green;
+	color: white;
+	text-align: center;
+	padding-top: 30px;
+	font-weight: bold;
+	font-size: 2em;
 	cursor: pointer;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+
+
+
+/* ikonok */
+div#minimap-container .ikon {
+	position: absolute;
+	z-index: 1100;
+	cursor: pointer;
+	display: none;
 }
 
 
 /* close button */
-#close {
+div#minimap-container #close {
 	position: absolute;
-	z-index: 900;
+	z-index: 1200;
 	top: 0;
 	left: 0;
 	width: 64px;
 	height: 64px;
 	cursor: pointer;
 	opacity:0.5;
-}
-
-
-#close img {
-	width: 100%;
-	height: 100%;
-}
-
-#resize2large img,
-#resize2small img  {
-	width: 100%;
-	height: 100%;
-	opacity: 0.5;
-}
-
-
-#resize2large {
-	position: absolute;
-	width: 32px;
-	height: 32px;
-	cursor: pointer;
-	z-index: 710;
 	display: none;
 }
 
-#resize2small {
-	position: absolute;
-	width: 32px;
-	height: 32px;
-	cursor: pointer;
-	z-index: 720;
+
+div#minimap-container #close img {
+	width: 100%;
+	height: 100%;
 }
 
 
+
+
 /* debug layer */
-div#debug {
+div#minimap-container div#debug {
 	display: none;
 	position:absolute;
 	margin: 0;
@@ -196,6 +192,6 @@ div#debug {
 	width: 200px;
 	height: 400px;
 	border: 1px solid red;
-	z-index: 1000;
+	z-index: 5000;
 	background: white;
 }
